@@ -10,10 +10,11 @@ methods:
     - summary
     - pretty_print_each_class()
 """
-    def __init__(self, name, grade, classes):
+    def __init__(self, name, grade, classes=None):
         self.name = name
         self.grade = grade
-        self.classes = classes
+        # use a ternary. if there is arg passed for classes, set the classes attr to that value, if nothing passed then list will be empty
+        self.classes = classes if classes else []
 
     def __str__(self):
         return f"Student {self.name}, {self.grade}, {self.classes}"
@@ -23,12 +24,14 @@ methods:
         return self.classes
 
     def get_num_classes(self):
-        pass   
+        return len(self.classes)
 
     def summary(self):
-        pass
+        self.display_each_class()
+        return self.__str__()
 
     def display_each_class(self):
-        pass
-    pass
+        for name in self.classes:
+            print(name)
+    
     
